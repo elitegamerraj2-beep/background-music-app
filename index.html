@@ -1,90 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Background Music Studio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>YouTube Background Music Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: #0d0d0d;
-      color: #ffffff;
-      text-align: center;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b0b0b;
+  color: #ffffff;
+}
 
-    .container {
-      max-width: 600px;
-      margin: 60px auto;
-      padding: 30px;
-      border: 1px solid #2a2a2a;
-      border-radius: 10px;
-      background-color: #141414;
-    }
+.container {
+  max-width: 700px;
+  margin: 60px auto;
+  padding: 30px;
+  background: #151515;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.6);
+  text-align: center;
+}
 
-    h1 {
-      margin-bottom: 10px;
-    }
+h1 {
+  margin-bottom: 10px;
+}
 
-    p {
-      color: #bdbdbd;
-    }
+p {
+  color: #bdbdbd;
+}
 
-    select, button {
-      width: 100%;
-      padding: 14px;
-      margin-top: 15px;
-      font-size: 16px;
-      border-radius: 6px;
-      border: none;
-    }
+select, button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 15px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+}
 
-    select {
-      background-color: #1f1f1f;
-      color: #ffffff;
-    }
+select {
+  background: #1f1f1f;
+  color: #ffffff;
+}
 
-    button {
-      background-color: #4caf50;
-      color: #ffffff;
-      cursor: pointer;
-    }
+button {
+  background: #e53935;
+  color: #ffffff;
+  cursor: pointer;
+}
 
-    button:hover {
-      background-color: #43a047;
-    }
+button:hover {
+  background: #d32f2f;
+}
 
-    .output {
-      margin-top: 25px;
-      padding: 20px;
-      border: 1px dashed #333;
-      color: #aaaaaa;
-    }
-  </style>
+.output {
+  margin-top: 25px;
+  padding: 20px;
+  border: 1px dashed #333;
+  color: #9e9e9e;
+}
+</style>
 </head>
 
 <body>
 
-  <div class="container">
-    <h1>🎵 Background Music Studio</h1>
-    <p>Select an emotion to prepare professional background music</p>
+<div class="container">
+  <h1>🎵 YouTube Background Music Studio</h1>
+  <p>Create soft, copyright-safe background music for YouTube</p>
 
-    <select>
-      <option value="neutral">Neutral</option>
-      <option value="emotional">Emotional</option>
-      <option value="happy">Happy</option>
-      <option value="dramatic">Dramatic</option>
-      <option value="motivational">Motivational</option>
-    </select>
+  <select id="mood">
+    <option value="">Select Mood</option>
+    <option>Calm</option>
+    <option>Happy</option>
+    <option>Inspirational</option>
+    <option>Neutral</option>
+    <option>Cinematic</option>
+  </select>
 
-    <button>Generate Background Music</button>
+  <select id="duration">
+    <option value="">Select Duration</option>
+    <option>30 seconds</option>
+    <option>1 minute</option>
+    <option>3 minutes</option>
+    <option>5 minutes</option>
+  </select>
 
-    <div class="output">
-      🎧 Music output will appear here
-    </div>
+  <button onclick="generateMusic()">Generate Background Music</button>
+
+  <div class="output" id="result">
+    🎧 Music output will appear here
   </div>
+</div>
+
+<script>
+function generateMusic() {
+  const mood = document.getElementById("mood").value;
+  const duration = document.getElementById("duration").value;
+  const result = document.getElementById("result");
+
+  if (!mood || !duration) {
+    result.innerHTML = "⚠️ Please select mood and duration.";
+    return;
+  }
+
+  result.innerHTML =
+    "✅ Background music ready<br><br>" +
+    "Mood: <b>" + mood + "</b><br>" +
+    "Duration: <b>" + duration + "</b><br><br>" +
+    "🎶 (Music generation will be added next)";
+}
+</script>
 
 </body>
 </html>
