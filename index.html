@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>YouTube Background Music Studio</title>
+  <title>Professional Background Music Studio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #0f0f0f;
-      color: #ffffff;
+      background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+      color: #fff;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -17,37 +17,42 @@
       margin: 0;
     }
 
-    .box {
-      background: #1c1c1c;
+    .app {
+      background: #151515;
       padding: 30px;
-      width: 350px;
-      border-radius: 12px;
+      width: 380px;
+      border-radius: 14px;
+      box-shadow: 0 0 25px rgba(255, 165, 0, 0.25);
       text-align: center;
-      box-shadow: 0 0 20px rgba(255, 165, 0, 0.3);
     }
 
     h1 {
       font-size: 22px;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
     }
 
     p {
       font-size: 14px;
-      color: #cccccc;
+      color: #bdbdbd;
+      margin-bottom: 20px;
     }
 
     select, button {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       margin-top: 12px;
-      border-radius: 6px;
+      border-radius: 8px;
       border: none;
       font-size: 14px;
     }
 
+    select {
+      background: #222;
+      color: #fff;
+    }
+
     button {
       background: orange;
-      color: black;
       font-weight: bold;
       cursor: pointer;
     }
@@ -63,7 +68,7 @@
 
     a {
       display: block;
-      margin-top: 10px;
+      margin-top: 12px;
       color: orange;
       text-decoration: none;
       font-weight: bold;
@@ -73,29 +78,32 @@
 
 <body>
 
-  <div class="box">
-    <h1>🎵 YouTube Background Music</h1>
-    <p>Create copyright-safe background music</p>
+  <div class="app">
+    <h1>🎵 Background Music Studio</h1>
+    <p>Select mood & generate music</p>
 
-    <select id="mood">
-      <option value="calm.mp3">Calm</option>
+    <select id="musicSelect">
+      <option value="calm.mp3">Calm / Relaxing</option>
+      <option value="cinematic.mp3">Cinematic / Emotional</option>
+      <option value="happy.mp3">Happy / Positive</option>
+      <option value="motivational.mp3">Motivational / Podcast</option>
     </select>
 
-    <button onclick="playMusic()">Create Background Music</button>
+    <button onclick="generateMusic()">Generate Background Music</button>
 
-    <audio id="player" controls></audio>
+    <audio id="audioPlayer" controls></audio>
 
-    <a id="download" download>⬇ Download Music</a>
+    <a id="downloadLink" download>⬇ Download Music</a>
   </div>
 
   <script>
-    function playMusic() {
-      const mood = document.getElementById("mood").value;
-      const player = document.getElementById("player");
-      const download = document.getElementById("download");
+    function generateMusic() {
+      const file = document.getElementById("musicSelect").value;
+      const player = document.getElementById("audioPlayer");
+      const download = document.getElementById("downloadLink");
 
-      player.src = mood;
-      download.href = mood;
+      player.src = file;
+      download.href = file;
 
       player.play();
     }
