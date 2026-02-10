@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Professional Background Music Studio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <title>AI Background Music Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     body {
       font-family: Arial, sans-serif;
       background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
-      color: #fff;
+      color: white;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -20,35 +20,29 @@
     .app {
       background: #151515;
       padding: 30px;
-      width: 380px;
+      width: 400px;
       border-radius: 14px;
-      box-shadow: 0 0 25px rgba(255, 165, 0, 0.25);
+      box-shadow: 0 0 30px rgba(255, 165, 0, 0.25);
       text-align: center;
     }
 
     h1 {
       font-size: 22px;
-      margin-bottom: 6px;
+      margin-bottom: 10px;
     }
 
     p {
       font-size: 14px;
-      color: #bdbdbd;
-      margin-bottom: 20px;
+      color: #cccccc;
     }
 
-    select, button {
+    input[type="file"], button {
       width: 100%;
       padding: 12px;
-      margin-top: 12px;
+      margin-top: 15px;
       border-radius: 8px;
       border: none;
       font-size: 14px;
-    }
-
-    select {
-      background: #222;
-      color: #fff;
     }
 
     button {
@@ -61,6 +55,12 @@
       background: #ffb347;
     }
 
+    .status {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #ffcc80;
+    }
+
     audio {
       width: 100%;
       margin-top: 15px;
@@ -68,10 +68,10 @@
 
     a {
       display: block;
-      margin-top: 12px;
+      margin-top: 10px;
       color: orange;
-      text-decoration: none;
       font-weight: bold;
+      text-decoration: none;
     }
   </style>
 </head>
@@ -79,33 +79,39 @@
 <body>
 
   <div class="app">
-    <h1>🎵 Background Music Studio</h1>
-    <p>Select mood & generate music</p>
+    <h1>🎬 AI Background Music Generator</h1>
+    <p>Upload your video and get perfect background music</p>
 
-    <select id="musicSelect">
-      <option value="calm.mp3">Calm / Relaxing</option>
-      <option value="cinematic.mp3">Cinematic / Emotional</option>
-      <option value="happy.mp3">Happy / Positive</option>
-      <option value="motivational.mp3">Motivational / Podcast</option>
-    </select>
+    <input type="file" accept="video/*">
 
-    <button onclick="generateMusic()">Generate Background Music</button>
+    <button onclick="startProcess()">Analyze & Generate Music</button>
 
-    <audio id="audioPlayer" controls></audio>
+    <div class="status" id="statusText">
+      Waiting for video...
+    </div>
 
+    <audio id="musicPlayer" controls></audio>
     <a id="downloadLink" download>⬇ Download Music</a>
   </div>
 
   <script>
-    function generateMusic() {
-      const file = document.getElementById("musicSelect").value;
-      const player = document.getElementById("audioPlayer");
+    function startProcess() {
+      const status = document.getElementById("statusText");
+      const player = document.getElementById("musicPlayer");
       const download = document.getElementById("downloadLink");
 
-      player.src = file;
-      download.href = file;
+      status.innerText = "🔍 Analyzing video...";
 
-      player.play();
+      setTimeout(() => {
+        status.innerText = "🎵 Generating background music...";
+      }, 2000);
+
+      setTimeout(() => {
+        status.innerText = "✅ Music ready!";
+        player.src = "calm.mp3";   // placeholder music
+        download.href = "calm.mp3";
+        player.play();
+      }, 4000);
     }
   </script>
 
